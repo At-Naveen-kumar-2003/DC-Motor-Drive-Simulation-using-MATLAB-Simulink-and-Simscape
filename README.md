@@ -1,19 +1,30 @@
-# DC Motor Drive Simulation using MATLAB Simulink and Simscape
+# DC Motor Simulation using MATLAB Simulink and Simscape
 
 ## Overview
 
-This project demonstrates the modeling and simulation of a Permanent Magnet DC (PMDC) Motor using MATLAB Simulink and Simscape Electrical. The objective is to analyze the motor's electrical and mechanical behavior by measuring voltage, current, and rotational speed under different supply voltages.
+This project demonstrates the modeling and simulation of a Permanent Magnet DC (PMDC) Motor using MATLAB Simulink and Simscape Electrical. The project investigates the electrical and mechanical characteristics of the motor under different supply conditions.
 
-The simulation is developed using MATLAB R2026a and follows a physical modeling approach with Simscape components.
+The simulation includes:
+
+- DC Source (12 V)
+- DC Source (24 V)
+- AC Source (for comparison)
+
+Motor voltage, current, and rotational motion are measured and analyzed using Simscape sensors and Simulink Scope blocks.
 
 ---
 
-## Objectives
+## Features
 
-- Model a Permanent Magnet DC Motor using Simscape.
-- Measure armature voltage, current, and motor speed.
-- Compare motor performance for 12 V and 24 V DC supply.
-- Understand the effect of supply voltage on motor characteristics.
+- PMDC motor modeling using Simscape
+- DC motor simulation with 12 V supply
+- DC motor simulation with 24 V supply
+- AC source comparison
+- Voltage measurement
+- Current measurement
+- Rotational motion measurement
+- Inertia (mechanical load) modeling
+- Real-time waveform visualization using Scope
 
 ---
 
@@ -28,6 +39,7 @@ The simulation is developed using MATLAB R2026a and follows a physical modeling 
 
 ## Components Used
 
+- AC Voltage Source
 - DC Voltage Source
 - Current Sensor
 - Voltage Sensor
@@ -38,76 +50,184 @@ The simulation is developed using MATLAB R2026a and follows a physical modeling 
 - Electrical Reference
 - Solver Configuration
 - PS-Simulink Converter
-- Mux
 - Scope
 
 ---
 
-## Model Description
+## Project Structure
 
-The DC motor is supplied by a DC voltage source through a current sensor. A voltage sensor is connected across the motor terminals to monitor the applied voltage. The motor shaft is connected to an Ideal Rotational Motion Sensor and an Inertia block to observe the motor's rotational characteristics. Physical signals are converted into Simulink signals using PS-Simulink Converters and displayed using a Scope.
-
----
-
-## Simulation Cases
-
-### Case 1: 12 V Supply
-
-- Supply Voltage: 12 V
-- Measured Parameters:
-  - Motor Voltage
-  - Armature Current
-  - Angular Speed
-
-### Case 2: 24 V Supply
-
-- Supply Voltage: 24 V
-- Measured Parameters:
-  - Motor Voltage
-  - Armature Current
-  - Angular Speed
+```
+DC-Motor-Simulation/
+│
+├── README.md
+├── DC_Motor_Drive_Simulation.slx
+├── AC_Motor_Comparison.slx
+│
+├── Images/
+│   ├── Simulink_image_DC_source.jpeg
+│   ├── dc_voltage_12v_output.jpeg
+│   ├── Dc_voltage_24v_output.jpeg
+│   ├── simulink_image_AC_source.jpeg
+│   ├── Ac_voltage_12v_output.jpeg
+│   └── Ac_voltage_24v_output.jpeg
+│
+└── Report/
+    └── DC_Motor_Report.pdf
+```
 
 ---
 
-## Results
+# Simulink Model (DC Source)
 
-The simulation shows that increasing the supply voltage from 12 V to 24 V increases:
+*(Add the image below)*
 
-- Motor speed
-- Armature current
-- Developed electromagnetic torque
-- Mechanical output power
-
-The motor reaches steady-state operation after a short transient period.
+![DC Simulink Model](Simulink_image_DC_source.jpeg)
 
 ---
 
-## Applications
+# Simulink Model (AC Source)
 
-- Industrial Automation
-- Electric Vehicles
-- Robotics
-- Conveyor Systems
-- Pumps
-- Fans
-- Home Appliances
-- Mechatronic Systems
+*(Add the image below)*
+![AC Simulink Model](simulink_image_AC_source.jpeg)
 
 ---
 
-## Learning Outcomes
+# Simulation Cases
+
+## Case 1 – DC Supply (12 V)
+
+### Objective
+
+To observe the motor voltage, current, and speed when supplied with a 12 V DC source.
+
+### Observations
+
+- Constant supply voltage of 12 V
+- Current reaches steady state after startup
+- Motor speed increases and stabilizes
+
+---
+
+## Output
+
+*(Insert image)*
+
+![12 V DC Output](dc_voltage_12v_output.jpeg)
+
+---
+
+## Case 2 – DC Supply (24 V)
+
+### Objective
+
+To compare the motor performance when the supply voltage is increased to 24 V.
+
+### Observations
+
+- Supply voltage increases to 24 V
+- Higher armature current
+- Increased motor speed
+- Higher developed torque
+
+---
+
+## Output
+
+*(Insert image)*
+
+![24 V DC Output](Dc_voltage_24v_output.jpeg)
+
+
+---
+
+## Case 3 – AC Supply
+
+### Objective
+
+To observe the behavior of a PMDC motor when directly supplied with an AC voltage source.
+
+### Observations
+
+- Voltage and current become sinusoidal.
+- Torque changes direction every half cycle.
+- The PMDC motor does not achieve smooth continuous rotation.
+- The simulation demonstrates why PMDC motors require a DC supply or a rectified AC source.
+
+---
+
+## AC Output
+
+### 12 V AC
+
+![12 V AC Output](Ac_voltage_12v_output.jpeg)
+
+### 24 V AC
+
+![24 V AC Output](Ac_voltage_24v_output.jpeg)
+
+---
+
+# Results
+
+## DC Supply
+
+- Constant output voltage
+- Stable motor operation
+- Smooth increase in rotational speed
+- Suitable for PMDC motors
+
+## AC Supply
+
+- Sinusoidal voltage and current
+- Oscillating motor response
+- No steady unidirectional rotation
+- Demonstrates the need for AC-to-DC conversion when using PMDC motors
+
+---
+
+# Comparison
+
+| Parameter | 12 V DC | 24 V DC | AC Source |
+|------------|----------|----------|-----------|
+| Voltage | Constant | Constant | Sinusoidal |
+| Current | Lower | Higher | Alternating |
+| Motor Speed | Lower | Higher | Oscillatory |
+| Torque | Lower | Higher | Alternating |
+| Suitable for PMDC | Yes | Yes | No |
+
+---
+
+# Learning Outcomes
 
 Through this project, I gained practical experience in:
 
 - MATLAB Simulink modeling
 - Simscape Electrical
 - Permanent Magnet DC Motor modeling
-- Electrical and mechanical system integration
-- Voltage and current measurement
-- Speed measurement using rotational sensors
-- Physical signal conversion using PS-Simulink Converter
-- Simulation and performance analysis of electromechanical systems
+- Sensor integration
+- Voltage measurement
+- Current measurement
+- Rotational motion measurement
+- Mechanical load (Inertia) modeling
+- PS-Simulink signal conversion
+- Analysis of DC and AC motor supply characteristics
+- Simulation-based performance comparison
+
+---
+
+# Applications
+
+- Industrial Automation
+- Robotics
+- Electric Vehicles
+- Conveyor Systems
+- Mechatronics
+- Educational Simulation
+- Embedded Control System Design
 
 ---
 
 
+### Skills
+
+MATLAB • Simulink • Simscape • Embedded C • STM32 • ESP32 • RTOS • Embedded Systems
